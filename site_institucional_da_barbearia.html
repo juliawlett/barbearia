@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube da Barba - Estilo & Assinatura</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Outfit for modern, youthful headings; Inter for reliable, clear body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#09090b', // Zinc 950 - Sleek modern black
+                            800: '#18181b', // Zinc 900
+                            700: '#27272a', // Zinc 800
+                        },
+                        accent: {
+                            light: '#fbbf24', // Amber 400
+                            DEFAULT: '#f59e0b', // Amber 500
+                            dark: '#ea580c', // Orange 600
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ea580c; }
+        
+        /* Glassmorphism utility */
+        .glass {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hide scrollbar for horizontal scroll but keep functionality */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-300 font-sans antialiased selection:bg-accent selection:text-dark-900 overflow-x-hidden">
+
+    <header class="fixed w-full glass z-50 border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-heading text-2xl font-black tracking-tight text-white flex items-center gap-2">
+                        CLUBE DA <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-light to-accent-dark">BARBA</span>
+                        <i class="fas fa-bolt text-accent text-lg"></i>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#sobre" class="text-sm font-medium hover:text-white transition-colors duration-300">A Crew</a>
+                    <a href="#servicos" class="text-sm font-medium hover:text-white transition-colors duration-300">Serviços</a>
+                    <a href="#depoimentos" class="text-sm font-medium hover:text-white transition-colors duration-300">Reviews</a>
+                    <a href="#assinatura" class="relative text-sm font-bold text-white group">
+                        Assinatura VIP
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-accent-light to-accent-dark rounded-full"></span>
+                    </a>
+                </nav>
+                
+                <div class="hidden md:flex">
+                    <a href="https://wa.me/5511999999999" target="_blank" class="bg-white/10 hover:bg-white/20 text-white border border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 backdrop-blur-md">
+                        <i class="fab fa-whatsapp text-green-400"></i> Agendar
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-800 border-b border-white/5 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="#sobre" class="block px-3 py-3 rounded-md text-base font-medium hover:bg-white/5 text-white">A Crew</a>
+                <a href="#servicos" class="block px-3 py-3 rounded-md text-base font-medium hover:bg-white/5 text-white">Serviços</a>
+                <a href="#assinatura" class="block px-3 py-3 rounded-md text-base font-medium text-accent bg-accent/10">Assinatura VIP</a>
+                <a href="#depoimentos" class="block px-3 py-3 rounded-md text-base font-medium hover:bg-white/5 text-white">Reviews</a>
+                <a href="https://wa.me/5511999999999" class="mt-4 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-accent to-accent-dark text-white px-5 py-3 rounded-xl font-bold">
+                    <i class="fab fa-whatsapp"></i> Agendar Agora
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://placehold.co/1920x1080/09090b/27272a?text=Barber+Shop+Vibe" alt="Interior" class="w-full h-full object-cover opacity-20 mix-blend-luminosity">
+            <div class="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/90 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+        </div>
+
+        <!-- Animated Blobs -->
+        <div class="absolute top-1/4 -left-20 w-72 h-72 bg-accent/20 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob z-0"></div>
+        <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-accent-dark/20 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob animation-delay-2000 z-0"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+                    <span class="flex w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-xs font-semibold text-gray-300 uppercase tracking-wider">Aberto agora • 09h às 20h</span>
+                </div>
+                
+                <h1 class="font-heading text-5xl sm:text-6xl md:text-7xl font-black text-white leading-[1.1] mb-6">
+                    O seu estilo, <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-light via-accent to-accent-dark">sem limites.</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl leading-relaxed">
+                    Esqueça a barbearia do seu avô. Aqui unimos técnica impecável, ambiente resenha e o único clube de assinatura que garante seu visual em dia, sempre.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#assinatura" class="group relative px-8 py-4 bg-white text-dark-900 font-bold rounded-xl overflow-hidden text-center transition-all hover:scale-105 active:scale-95">
+                        <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-accent-light to-accent transition-all group-hover:opacity-100 opacity-0 z-0"></div>
+                        <span class="relative z-10 flex items-center justify-center gap-2 group-hover:text-white transition-colors">
+                            Conhecer o Clube <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                    <a href="#servicos" class="px-8 py-4 bg-dark-800 border border-white/10 hover:bg-dark-700 text-white font-semibold rounded-xl transition-all text-center">
+                        Ver Serviços
+                    </a>
+                </div>
+
+                <!-- Social Proof Stats -->
+                <div class="mt-16 flex items-center gap-8 border-t border-white/10 pt-8">
+                    <div>
+                        <p class="font-heading text-3xl font-bold text-white">4.9<span class="text-accent text-xl">★</span></p>
+                        <p class="text-xs text-gray-500 uppercase tracking-wide mt-1">Google Reviews</p>
+                    </div>
+                    <div class="w-px h-12 bg-white/10"></div>
+                    <div>
+                        <p class="font-heading text-3xl font-bold text-white">1000<span class="text-accent">+</span></p>
+                        <p class="text-xs text-gray-500 uppercase tracking-wide mt-1">Assinantes Ativos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-24 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Image Grid -->
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://placehold.co/400x500/18181b/f59e0b?text=Corte+Moderno" alt="Corte" class="rounded-2xl object-cover w-full h-64 md:h-80 shadow-2xl mt-8">
+                        <img src="https://placehold.co/400x500/27272a/ea580c?text=Ambiente" alt="Ambiente" class="rounded-2xl object-cover w-full h-64 md:h-80 shadow-2xl mb-8">
+                    </div>
+                    <!-- Badge overlay -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark-800/80 backdrop-blur-md border border-white/10 p-6 rounded-full w-32 h-32 flex flex-col items-center justify-center text-center shadow-[0_0_30px_rgba(245,158,11,0.15)]">
+                        <span class="font-heading text-3xl font-black text-accent">5</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-white leading-tight">Anos de<br>Respeito</span>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div>
+                    <h2 class="text-accent font-bold uppercase tracking-widest text-sm mb-3">A Crew</h2>
+                    <h3 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6">Não é só cabelo.<br>É atitude.</h3>
+                    <p class="text-gray-400 mb-6 text-lg leading-relaxed">
+                        Nascemos para quebrar o padrão da barbearia monótona. No <span class="text-white font-semibold">Clube da Barba</span>, você encontra profissionais que respiram tendência, seja num fade perfeito, num mullet ousado ou numa barba alinhada na navalha.
+                    </p>
+                    <p class="text-gray-400 mb-8 text-lg leading-relaxed">
+                        Ambiente climatizado, som de primeira, cerveja gelada e a confiança de sair daqui pronto para qualquer corre da sua semana.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-white font-medium">
+                            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent"><i class="fas fa-check text-sm"></i></div>
+                            Especialistas em visagismo
+                        </li>
+                        <li class="flex items-center gap-3 text-white font-medium">
+                            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent"><i class="fas fa-check text-sm"></i></div>
+                            Produtos premium de alta performance
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="py-24 bg-dark-800 border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-accent font-bold uppercase tracking-widest text-sm mb-3">O que fazemos de melhor</h2>
+                <h3 class="font-heading text-4xl font-bold text-white">Serviços Avulsos</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-dark-900 rounded-2xl p-8 border border-white/5 hover:border-accent/50 transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(245,158,11,0.1)] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
+                    
+                    <div class="w-14 h-14 bg-dark-800 rounded-xl flex items-center justify-center text-white mb-6 border border-white/10 group-hover:bg-accent group-hover:text-dark-900 transition-colors">
+                        <i class="fas fa-cut text-xl"></i>
+                    </div>
+                    <div class="flex justify-between items-end mb-4">
+                        <h4 class="font-heading text-2xl font-bold text-white">Corte</h4>
+                        <span class="font-heading text-xl font-bold text-accent">R$ 55</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Qualquer estilo: Fade, Social, Pompadour. Inclui lavagem, consultoria de estilo e finalização com pomada premium.</p>
+                </div>
+                
+                <!-- Card 2 (Highlight) -->
+                <div class="bg-gradient-to-b from-dark-700 to-dark-900 rounded-2xl p-8 border border-white/10 hover:border-accent transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(245,158,11,0.2)] relative overflow-hidden shadow-2xl">
+                    <div class="absolute top-4 right-4 bg-accent text-dark-900 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">
+                        Mais Pedido
+                    </div>
+                    <div class="w-14 h-14 bg-accent/20 rounded-xl flex items-center justify-center text-accent mb-6 border border-accent/20 group-hover:bg-accent group-hover:text-dark-900 transition-colors">
+                        <i class="fas fa-user-tie text-xl"></i>
+                    </div>
+                    <div class="flex justify-between items-end mb-4">
+                        <h4 class="font-heading text-2xl font-bold text-white">Corte + Barba</h4>
+                        <span class="font-heading text-xl font-bold text-accent">R$ 90</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">O pacote completo. Visual renovado, toalha quente, massagem facial e finalização impecável para a semana.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-dark-900 rounded-2xl p-8 border border-white/5 hover:border-accent/50 transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(245,158,11,0.1)] relative overflow-hidden">
+                    <div class="w-14 h-14 bg-dark-800 rounded-xl flex items-center justify-center text-white mb-6 border border-white/10 group-hover:bg-accent group-hover:text-dark-900 transition-colors">
+                        <i class="fas fa-spray-can text-xl"></i>
+                    </div>
+                    <div class="flex justify-between items-end mb-4">
+                        <h4 class="font-heading text-2xl font-bold text-white">Barboterapia</h4>
+                        <span class="font-heading text-xl font-bold text-accent">R$ 45</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Ritual completo: toalha quente, alinhamento na navalha, óleos essenciais e balm hidratante para fios mais macios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="assinatura" class="py-24 bg-dark-900 relative overflow-hidden">
+        <!-- Modern Grid Background Pattern -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KSIvPjwvc3ZnPg==')] opacity-50"></div>
+        
+        <!-- Glow effects -->
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-accent/10 border border-accent/20 text-accent font-semibold text-sm uppercase tracking-wide">
+                    <i class="fas fa-star mr-2"></i> Nosso Diferencial
+                </div>
+                <h2 class="font-heading text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
+                    Hackeie seu estilo.<br>Assine o Clube.
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Cansado de ligar e não ter horário? Escolha o plano ideal para você e garanta prioridade, cortes mensais e um visual impecável sempre que precisar.
+                </p>
+            </div>
+
+            <!-- Pricing Cards Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
+                
+                <!-- Plan 1: Essencial -->
+                <div class="relative bg-dark-800/50 backdrop-blur-sm border border-white/5 hover:border-white/20 rounded-[2rem] p-8 flex flex-col h-full transition-all duration-300">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-heading text-xl font-bold text-gray-300">Plano Essencial</h3>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <span class="text-4xl font-black text-white">R$ 85</span>
+                        <span class="text-gray-500 font-medium">/mês</span>
+                    </div>
+                    
+                    <p class="text-gray-400 text-sm mb-8 border-b border-white/5 pb-8 h-16">
+                        O básico bem feito para quem quer manter o corte sempre alinhado.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-gray-500">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">2 Cortes Mensais</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-gray-500">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">Agendamento Padrão</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-gray-500">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">1 Café / Refri Free por visita</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://wa.me/5511999999999?text=Quero%20assinar%20o%20Plano%20Essencial" target="_blank" class="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 text-center">
+                        Assinar Essencial
+                    </a>
+                </div>
+
+                <!-- Plan 2: VIP (Highlight) -->
+                <div class="relative group lg:-mt-6 lg:mb-6">
+                    <div class="absolute -inset-1 bg-gradient-to-b from-accent-light via-accent to-accent-dark rounded-[2rem] blur opacity-75 group-hover:opacity-100 transition duration-500 pb-1"></div>
+                    
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-accent-light to-accent text-dark-900 font-bold px-4 py-1 rounded-full text-xs uppercase tracking-wider z-20 shadow-lg">
+                        Mais Escolhido
+                    </div>
+
+                    <div class="relative bg-dark-900 border border-white/10 rounded-[2rem] p-8 sm:p-10 flex flex-col h-full z-10">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-heading text-2xl font-bold text-white">Plano VIP</h3>
+                            <span class="bg-white/10 text-white text-xs font-bold px-3 py-1 rounded-full border border-white/10">Mensal</span>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <span class="text-5xl font-black text-white">R$ 130</span>
+                            <span class="text-gray-400 font-medium">/mês</span>
+                        </div>
+                        
+                        <p class="text-gray-400 text-sm mb-8 border-b border-white/10 pb-8 h-16">
+                            Perfeito para quem precisa manter a régua sempre alta, sem complicação ou surpresas.
+                        </p>
+                        
+                        <ul class="space-y-5 mb-10 flex-1">
+                            <li class="flex items-start gap-3">
+                                <div class="mt-0.5 bg-accent/20 p-1 rounded-full text-accent">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-gray-200"><strong>3 Cortes Mensais</strong><br><span class="text-xs text-gray-500">Agendou, cortou. + Cortes se houver vaga!</span></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-0.5 bg-accent/20 p-1 rounded-full text-accent">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-gray-200"><strong>Prioridade de Agendamento</strong><br><span class="text-xs text-gray-500">Passe na frente nos finais de semana.</span></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-0.5 bg-accent/20 p-1 rounded-full text-accent">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-gray-200"><strong>Cerveja / Café Free</strong><br><span class="text-xs text-gray-500">Uma cortesia a cada visita.</span></span>
+                            </li>
+                        </ul>
+                        
+                        <a href="https://wa.me/5511999999999?text=Quero%20entrar%20para%20o%20Clube%20VIP!" target="_blank" class="w-full bg-gradient-to-r from-accent to-accent-dark hover:from-accent-light hover:to-accent text-white font-bold text-lg py-4 px-6 rounded-xl transition-all duration-300 text-center shadow-[0_0_20px_rgba(245,158,11,0.4)] flex items-center justify-center gap-2">
+                            Quero Ser VIP <i class="fas fa-rocket text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Plan 3: Boss -->
+                <div class="relative bg-dark-800/50 backdrop-blur-sm border border-white/5 hover:border-white/20 rounded-[2rem] p-8 flex flex-col h-full transition-all duration-300">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-heading text-xl font-bold text-gray-300">Plano Boss</h3>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <span class="text-4xl font-black text-white">R$ 190</span>
+                        <span class="text-gray-500 font-medium">/mês</span>
+                    </div>
+                    
+                    <p class="text-gray-400 text-sm mb-8 border-b border-white/5 pb-8 h-16">
+                        Para quem respira estilo e faz questão do tratamento completo com barba inclusa.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-10 flex-1">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-gray-500">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">Cortes "Ilimitados"*</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-gray-500">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">Barba inclusa (2x ao mês)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-gray-500">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">Prioridade Máxima</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 text-gray-500">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-gray-300 text-sm">Cervejas Premium Free</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://wa.me/5511999999999?text=Quero%20assinar%20o%20Plano%20Boss" target="_blank" class="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 text-center">
+                        Assinar Boss
+                    </a>
+                </div>
+
+            </div>
+            
+            <p class="text-center mt-12 text-sm text-gray-500">
+                *O Plano Boss possui uso justo (fair use) mediante disponibilidade da agenda. Vagas limitadas para manter a qualidade de todos os assinantes.
+            </p>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="py-24 bg-dark-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="text-accent font-bold uppercase tracking-widest text-sm mb-3">A voz da Crew</h2>
+                    <h3 class="font-heading text-4xl font-bold text-white">O que dizem sobre nós</h3>
+                </div>
+                <div class="flex gap-2">
+                    <button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition" onclick="document.getElementById('reviews-container').scrollBy({left: -300, behavior: 'smooth'})">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition" onclick="document.getElementById('reviews-container').scrollBy({left: 300, behavior: 'smooth'})">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Horizontal Scroll Container -->
+            <div id="reviews-container" class="flex gap-6 overflow-x-auto hide-scroll snap-x snap-mandatory pb-8">
+                
+                <!-- Review 1 -->
+                <div class="min-w-[300px] md:min-w-[400px] snap-center glass p-8 rounded-2xl">
+                    <div class="flex text-accent text-sm mb-4 gap-1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-8 font-medium text-lg leading-relaxed">
+                        "A assinatura VIP é absurda. Trabalho com vendas, preciso estar sempre alinhado. Mando mensagem, tem horário, chego lá e sou atendido na hora. Top demais."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-xl font-bold text-white">
+                            LC
+                        </div>
+                        <div>
+                            <p class="text-white font-bold">Lucas Castro</p>
+                            <p class="text-xs text-accent uppercase font-semibold">Assinante VIP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="min-w-[300px] md:min-w-[400px] snap-center glass p-8 rounded-2xl">
+                    <div class="flex text-accent text-sm mb-4 gap-1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-8 font-medium text-lg leading-relaxed">
+                        "Ambiente irado. Os caras sabem cortar cabelo moderno de verdade. Pedi um taper fade e saiu perfeito. Cerveja gelada e som bom completam o rolê."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-xl font-bold text-white">
+                            TG
+                        </div>
+                        <div>
+                            <p class="text-white font-bold">Thiago Garcia</p>
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Cliente Avulso</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="min-w-[300px] md:min-w-[400px] snap-center glass p-8 rounded-2xl">
+                    <div class="flex text-accent text-sm mb-4 gap-1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-8 font-medium text-lg leading-relaxed">
+                        "Não me preocupo mais em calcular quanto gasto com barbearia por mês. O clube resolveu meu problema. A comodidade de agendar sem burocracia não tem preço."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-xl font-bold text-white">
+                            MR
+                        </div>
+                        <div>
+                            <p class="text-white font-bold">Matheus Rocha</p>
+                            <p class="text-xs text-accent uppercase font-semibold">Assinante VIP</p>
+                        </div>
+                    </div>
+                </div>
+                
+                 <!-- Review 4 -->
+                 <div class="min-w-[300px] md:min-w-[400px] snap-center glass p-8 rounded-2xl">
+                    <div class="flex text-accent text-sm mb-4 gap-1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-8 font-medium text-lg leading-relaxed">
+                        "Estrutura animal, barbeiros muito bem treinados. Fui fazer a barba e acabei saindo com o visual renovado completo. Recomendo de olhos fechados."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-xl font-bold text-white">
+                            PH
+                        </div>
+                        <div>
+                            <p class="text-white font-bold">Pedro Henrique</p>
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Cliente Avulso</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="localizacao" class="py-24 bg-dark-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-dark-800 rounded-3xl overflow-hidden border border-white/5 flex flex-col lg:flex-row shadow-2xl">
+                <!-- Info -->
+                <div class="p-10 lg:p-16 lg:w-1/2 flex flex-col justify-center">
+                    <h2 class="font-heading text-4xl font-bold text-white mb-8">Cola aí.</h2>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-5 group">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-dark-900 transition-colors shrink-0">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-bold text-lg mb-1">Base da Operação</h5>
+                                <p class="text-gray-400">Av. Paulista, 1000 - Bela Vista<br>São Paulo - SP</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-5 group">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-dark-900 transition-colors shrink-0">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-bold text-lg mb-1">Horários</h5>
+                                <p class="text-gray-400">Segunda a Sexta: 09h às 20h<br>Sábados: 09h às 18h</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-5 group">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-dark-900 transition-colors shrink-0">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-bold text-lg mb-1">WhatsApp</h5>
+                                <p class="text-gray-400">(11) 99999-9999</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Area -->
+                <div class="lg:w-1/2 min-h-[400px] bg-dark-950 relative">
+                    <!-- Map Graphic Placeholder -->
+                    <div class="absolute inset-0 bg-[url('https://placehold.co/800x600/09090b/27272a?text=Mapa+Interativo')] bg-cover bg-center opacity-40"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-dark-800 to-transparent lg:block hidden"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <a href="#" class="bg-dark-900/90 backdrop-blur border border-white/10 text-white px-6 py-3 rounded-xl font-medium hover:border-accent transition-colors shadow-xl flex items-center gap-2">
+                            <i class="fas fa-location-arrow text-accent"></i> Abrir no Waze
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-950 py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Logo -->
+                <a href="#" class="font-heading text-xl font-black tracking-tight text-white flex items-center gap-2">
+                    CLUBE DA <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-light to-accent-dark">BARBA</span>
+                </a>
+                
+                <!-- Links -->
+                <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-gray-500">
+                    <a href="#sobre" class="hover:text-white transition-colors">A Crew</a>
+                    <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
+                    <a href="#assinatura" class="hover:text-accent transition-colors">Assinatura VIP</a>
+                    <a href="#" class="hover:text-white transition-colors">Políticas</a>
+                </div>
+                
+                <!-- Social -->
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-accent hover:text-dark-900 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-accent hover:text-dark-900 transition-colors">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-white/5 text-center text-sm text-gray-600">
+                &copy; 2026 Clube da Barba. Estilo e atitude.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/5511999999999" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#1ebe5d] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all duration-300 z-50 hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close menu on click link
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar blur effect on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-lg', 'bg-dark-900/80');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-dark-900/80');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+    </script>
+</body>
+</html>
