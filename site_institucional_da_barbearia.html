@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clube da Barba - Estilo & Assinatura</title>
-    
+    <meta name="description" content="Clube da Barba — barbearia, serviços, assinatura, equipe e agendamento em São Paulo.">
+    <title>Clube da Barba — Estilo & Assinatura</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Outfit for modern, youthful headings; Inter for reliable, clear body text -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -21,644 +21,661 @@
                         heading: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        dark: {
-                            900: '#09090b', // Zinc 950 - Sleek modern black
-                            800: '#18181b', // Zinc 900
-                            700: '#27272a', // Zinc 800
-                        },
+                        ink: '#08090b',
+                        panel: '#111216',
+                        panel2: '#17191e',
+                        line: '#262830',
                         accent: {
-                            light: '#fbbf24', // Amber 400
-                            DEFAULT: '#f59e0b', // Amber 500
-                            dark: '#ea580c', // Orange 600
+                            light: '#ffd166',
+                            DEFAULT: '#f59e0b',
+                            dark: '#d97706',
                         }
                     },
-                    animation: {
-                        'blob': 'blob 7s infinite',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        }
+                    boxShadow: {
+                        amber: '0 18px 60px rgba(245, 158, 11, .16)',
+                        deep: '0 30px 80px rgba(0, 0, 0, .35)'
                     }
                 }
             }
         }
     </script>
+
     <style>
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #09090b; }
-        ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #ea580c; }
-        
-        /* Glassmorphism utility */
+        :root { color-scheme: dark; }
+        html { scroll-padding-top: 92px; }
+        body { background: #08090b; }
+        ::selection { background: #f59e0b; color: #08090b; }
+        ::-webkit-scrollbar { width: 7px; }
+        ::-webkit-scrollbar-track { background: #08090b; }
+        ::-webkit-scrollbar-thumb { background: #3a3d46; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+
         .glass {
-            background: rgba(24, 24, 27, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(8, 9, 11, .78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
 
-        /* Hide scrollbar for horizontal scroll but keep functionality */
+        .eyebrow { letter-spacing: .18em; }
+        .photo-overlay { background: linear-gradient(180deg, transparent 20%, rgba(8,9,11,.78) 100%); }
+        .hero-grid {
+            background-image:
+                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: linear-gradient(to bottom, black, transparent 88%);
+        }
+
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .stagger-1 { transition-delay: .08s; }
+        .stagger-2 { transition-delay: .16s; }
+        .stagger-3 { transition-delay: .24s; }
+
+        .team-card img { transition: transform .55s ease, filter .55s ease; }
+        .team-card:hover img { transform: scale(1.045); filter: saturate(1.08); }
+
+        .faq-item { transition: border-color .3s ease, background .3s ease, box-shadow .3s ease; }
+        .faq-item.open {
+            border-color: rgba(245, 158, 11, .34);
+            background: linear-gradient(135deg, rgba(245,158,11,.075), rgba(17,18,22,.82) 42%, rgba(17,18,22,.68));
+            box-shadow: 0 16px 45px rgba(0,0,0,.18);
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height .38s ease, opacity .3s ease; opacity: 0; }
+        .faq-item.open .faq-answer { max-height: 260px; opacity: 1; }
+        .faq-item.open .faq-question { color: #fbbf24; }
+        .faq-item.open .faq-icon-wrap { background: #f59e0b; border-color: #f59e0b; color: #08090b; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+        .faq-icon, .faq-icon-wrap, .faq-question { transition: transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease; }
+
         .hide-scroll::-webkit-scrollbar { display: none; }
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+        :focus-visible { outline: 2px solid #f59e0b; outline-offset: 4px; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+            .reveal { opacity: 1; transform: none; }
+        }
     </style>
 </head>
-<body class="bg-dark-900 text-gray-300 font-sans antialiased selection:bg-accent selection:text-dark-900 overflow-x-hidden">
 
-    <header class="fixed w-full glass z-50 border-b border-white/5 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="font-heading text-2xl font-black tracking-tight text-white flex items-center gap-2">
-                        CLUBE DA <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-light to-accent-dark">BARBA</span>
-                        <i class="fas fa-bolt text-accent text-lg"></i>
-                    </a>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <nav class="hidden md:flex space-x-8 items-center">
-                    <a href="#sobre" class="text-sm font-medium hover:text-white transition-colors duration-300">A Crew</a>
-                    <a href="#servicos" class="text-sm font-medium hover:text-white transition-colors duration-300">Serviços</a>
-                    <a href="#depoimentos" class="text-sm font-medium hover:text-white transition-colors duration-300">Reviews</a>
-                    <a href="#assinatura" class="relative text-sm font-bold text-white group">
-                        Assinatura VIP
-                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-accent-light to-accent-dark rounded-full"></span>
-                    </a>
+<body class="bg-ink text-zinc-300 font-sans antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header id="navbar" class="fixed inset-x-0 top-0 z-50 border-b border-white/[.06] glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="h-[76px] flex items-center justify-between">
+                <a href="#inicio" class="flex items-center gap-3 group" aria-label="Ir para o início">
+                    <span class="w-9 h-9 rounded-xl border border-accent/35 bg-accent/10 grid place-items-center text-accent shadow-[inset_0_0_20px_rgba(245,158,11,.06)]">
+                        <i class="fa-solid fa-scissors text-sm"></i>
+                    </span>
+                    <span class="font-heading font-black tracking-tight text-white text-xl sm:text-2xl">
+                        CLUBE DA <span class="text-accent">BARBA</span>
+                    </span>
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium" aria-label="Navegação principal">
+                    <a href="#sobre" class="hover:text-white transition">Sobre</a>
+                    <a href="#servicos" class="hover:text-white transition">Serviços</a>
+                    <a href="#assinatura" class="hover:text-white transition">Clube VIP</a>
+                    <a href="#equipe" class="hover:text-white transition">Equipe</a>
+                    <a href="#faq" class="hover:text-white transition">FAQ</a>
                 </nav>
-                
-                <div class="hidden md:flex">
-                    <a href="https://wa.me/5511999999999" target="_blank" class="bg-white/10 hover:bg-white/20 text-white border border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 backdrop-blur-md">
-                        <i class="fab fa-whatsapp text-green-400"></i> Agendar
+
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="#localizacao" class="text-sm font-semibold text-zinc-300 hover:text-white px-3 py-2 transition">Como chegar</a>
+                    <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20agendar%20um%20horário%20na%20Clube%20da%20Barba." target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-xl bg-accent hover:bg-accent-light text-ink px-5 py-3 text-sm font-bold transition-all hover:-translate-y-0.5 shadow-amber">
+                        <i class="fa-brands fa-whatsapp"></i> Agendar horário
                     </a>
                 </div>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
+                <button id="mobile-menu-btn" class="md:hidden w-11 h-11 rounded-xl border border-white/10 grid place-items-center text-white hover:bg-white/5 transition" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-dark-800 border-b border-white/5 absolute w-full">
-            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
-                <a href="#sobre" class="block px-3 py-3 rounded-md text-base font-medium hover:bg-white/5 text-white">A Crew</a>
-                <a href="#servicos" class="block px-3 py-3 rounded-md text-base font-medium hover:bg-white/5 text-white">Serviços</a>
-                <a href="#assinatura" class="block px-3 py-3 rounded-md text-base font-medium text-accent bg-accent/10">Assinatura VIP</a>
-                <a href="#depoimentos" class="block px-3 py-3 rounded-md text-base font-medium hover:bg-white/5 text-white">Reviews</a>
-                <a href="https://wa.me/5511999999999" class="mt-4 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-accent to-accent-dark text-white px-5 py-3 rounded-xl font-bold">
-                    <i class="fab fa-whatsapp"></i> Agendar Agora
-                </a>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/[.06] bg-ink/95 backdrop-blur-xl">
+            <div class="max-w-7xl mx-auto px-5 py-5 grid gap-1">
+                <a href="#sobre" class="px-3 py-3 rounded-lg hover:bg-white/5 text-white">Sobre</a>
+                <a href="#servicos" class="px-3 py-3 rounded-lg hover:bg-white/5 text-white">Serviços</a>
+                <a href="#assinatura" class="px-3 py-3 rounded-lg hover:bg-white/5 text-white">Clube VIP</a>
+                <a href="#equipe" class="px-3 py-3 rounded-lg hover:bg-white/5 text-white">Equipe</a>
+                <a href="#faq" class="px-3 py-3 rounded-lg hover:bg-white/5 text-white">FAQ</a>
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" class="mt-3 flex justify-center items-center gap-2 bg-accent text-ink rounded-xl py-3.5 font-bold"><i class="fa-brands fa-whatsapp"></i> Agendar agora</a>
             </div>
         </div>
     </header>
 
-    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://placehold.co/1920x1080/09090b/27272a?text=Barber+Shop+Vibe" alt="Interior" class="w-full h-full object-cover opacity-20 mix-blend-luminosity">
-            <div class="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/90 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
-        </div>
+    <main>
+        <!-- Hero -->
+        <section id="inicio" class="relative min-h-[94vh] pt-[76px] overflow-hidden flex items-center">
+            <div class="absolute inset-0 hero-grid opacity-80 pointer-events-none"></div>
+            <div class="absolute -top-32 -left-36 w-[520px] h-[520px] rounded-full bg-accent/10 blur-[120px] pointer-events-none"></div>
 
-        <!-- Animated Blobs -->
-        <div class="absolute top-1/4 -left-20 w-72 h-72 bg-accent/20 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob z-0"></div>
-        <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-accent-dark/20 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob animation-delay-2000 z-0"></div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
-                    <span class="flex w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    <span class="text-xs font-semibold text-gray-300 uppercase tracking-wider">Aberto agora • 09h às 20h</span>
-                </div>
-                
-                <h1 class="font-heading text-5xl sm:text-6xl md:text-7xl font-black text-white leading-[1.1] mb-6">
-                    O seu estilo, <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-light via-accent to-accent-dark">sem limites.</span>
-                </h1>
-                
-                <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl leading-relaxed">
-                    Esqueça a barbearia do seu avô. Aqui unimos técnica impecável, ambiente resenha e o único clube de assinatura que garante seu visual em dia, sempre.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#assinatura" class="group relative px-8 py-4 bg-white text-dark-900 font-bold rounded-xl overflow-hidden text-center transition-all hover:scale-105 active:scale-95">
-                        <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-accent-light to-accent transition-all group-hover:opacity-100 opacity-0 z-0"></div>
-                        <span class="relative z-10 flex items-center justify-center gap-2 group-hover:text-white transition-colors">
-                            Conhecer o Clube <i class="fas fa-arrow-right"></i>
-                        </span>
-                    </a>
-                    <a href="#servicos" class="px-8 py-4 bg-dark-800 border border-white/10 hover:bg-dark-700 text-white font-semibold rounded-xl transition-all text-center">
-                        Ver Serviços
-                    </a>
-                </div>
-
-                <!-- Social Proof Stats -->
-                <div class="mt-16 flex items-center gap-8 border-t border-white/10 pt-8">
-                    <div>
-                        <p class="font-heading text-3xl font-bold text-white">4.9<span class="text-accent text-xl">★</span></p>
-                        <p class="text-xs text-gray-500 uppercase tracking-wide mt-1">Google Reviews</p>
-                    </div>
-                    <div class="w-px h-12 bg-white/10"></div>
-                    <div>
-                        <p class="font-heading text-3xl font-bold text-white">1000<span class="text-accent">+</span></p>
-                        <p class="text-xs text-gray-500 uppercase tracking-wide mt-1">Assinantes Ativos</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="sobre" class="py-24 bg-dark-900 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <!-- Image Grid -->
-                <div class="relative">
-                    <div class="grid grid-cols-2 gap-4">
-                        <img src="https://placehold.co/400x500/18181b/f59e0b?text=Corte+Moderno" alt="Corte" class="rounded-2xl object-cover w-full h-64 md:h-80 shadow-2xl mt-8">
-                        <img src="https://placehold.co/400x500/27272a/ea580c?text=Ambiente" alt="Ambiente" class="rounded-2xl object-cover w-full h-64 md:h-80 shadow-2xl mb-8">
-                    </div>
-                    <!-- Badge overlay -->
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark-800/80 backdrop-blur-md border border-white/10 p-6 rounded-full w-32 h-32 flex flex-col items-center justify-center text-center shadow-[0_0_30px_rgba(245,158,11,0.15)]">
-                        <span class="font-heading text-3xl font-black text-accent">5</span>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-white leading-tight">Anos de<br>Respeito</span>
-                    </div>
-                </div>
-
-                <!-- Content -->
-                <div>
-                    <h2 class="text-accent font-bold uppercase tracking-widest text-sm mb-3">A Crew</h2>
-                    <h3 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6">Não é só cabelo.<br>É atitude.</h3>
-                    <p class="text-gray-400 mb-6 text-lg leading-relaxed">
-                        Nascemos para quebrar o padrão da barbearia monótona. No <span class="text-white font-semibold">Clube da Barba</span>, você encontra profissionais que respiram tendência, seja num fade perfeito, num mullet ousado ou numa barba alinhada na navalha.
-                    </p>
-                    <p class="text-gray-400 mb-8 text-lg leading-relaxed">
-                        Ambiente climatizado, som de primeira, cerveja gelada e a confiança de sair daqui pronto para qualquer corre da sua semana.
-                    </p>
-                    
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-3 text-white font-medium">
-                            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent"><i class="fas fa-check text-sm"></i></div>
-                            Especialistas em visagismo
-                        </li>
-                        <li class="flex items-center gap-3 text-white font-medium">
-                            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent"><i class="fas fa-check text-sm"></i></div>
-                            Produtos premium de alta performance
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="servicos" class="py-24 bg-dark-800 border-y border-white/5 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-accent font-bold uppercase tracking-widest text-sm mb-3">O que fazemos de melhor</h2>
-                <h3 class="font-heading text-4xl font-bold text-white">Serviços Avulsos</h3>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-dark-900 rounded-2xl p-8 border border-white/5 hover:border-accent/50 transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(245,158,11,0.1)] relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
-                    
-                    <div class="w-14 h-14 bg-dark-800 rounded-xl flex items-center justify-center text-white mb-6 border border-white/10 group-hover:bg-accent group-hover:text-dark-900 transition-colors">
-                        <i class="fas fa-cut text-xl"></i>
-                    </div>
-                    <div class="flex justify-between items-end mb-4">
-                        <h4 class="font-heading text-2xl font-bold text-white">Corte</h4>
-                        <span class="font-heading text-xl font-bold text-accent">R$ 55</span>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Qualquer estilo: Fade, Social, Pompadour. Inclui lavagem, consultoria de estilo e finalização com pomada premium.</p>
-                </div>
-                
-                <!-- Card 2 (Highlight) -->
-                <div class="bg-gradient-to-b from-dark-700 to-dark-900 rounded-2xl p-8 border border-white/10 hover:border-accent transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(245,158,11,0.2)] relative overflow-hidden shadow-2xl">
-                    <div class="absolute top-4 right-4 bg-accent text-dark-900 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">
-                        Mais Pedido
-                    </div>
-                    <div class="w-14 h-14 bg-accent/20 rounded-xl flex items-center justify-center text-accent mb-6 border border-accent/20 group-hover:bg-accent group-hover:text-dark-900 transition-colors">
-                        <i class="fas fa-user-tie text-xl"></i>
-                    </div>
-                    <div class="flex justify-between items-end mb-4">
-                        <h4 class="font-heading text-2xl font-bold text-white">Corte + Barba</h4>
-                        <span class="font-heading text-xl font-bold text-accent">R$ 90</span>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">O pacote completo. Visual renovado, toalha quente, massagem facial e finalização impecável para a semana.</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-dark-900 rounded-2xl p-8 border border-white/5 hover:border-accent/50 transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(245,158,11,0.1)] relative overflow-hidden">
-                    <div class="w-14 h-14 bg-dark-800 rounded-xl flex items-center justify-center text-white mb-6 border border-white/10 group-hover:bg-accent group-hover:text-dark-900 transition-colors">
-                        <i class="fas fa-spray-can text-xl"></i>
-                    </div>
-                    <div class="flex justify-between items-end mb-4">
-                        <h4 class="font-heading text-2xl font-bold text-white">Barboterapia</h4>
-                        <span class="font-heading text-xl font-bold text-accent">R$ 45</span>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Ritual completo: toalha quente, alinhamento na navalha, óleos essenciais e balm hidratante para fios mais macios.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="assinatura" class="py-24 bg-dark-900 relative overflow-hidden">
-        <!-- Modern Grid Background Pattern -->
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KSIvPjwvc3ZnPg==')] opacity-50"></div>
-        
-        <!-- Glow effects -->
-        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[100px] pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-accent/10 border border-accent/20 text-accent font-semibold text-sm uppercase tracking-wide">
-                    <i class="fas fa-star mr-2"></i> Nosso Diferencial
-                </div>
-                <h2 class="font-heading text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
-                    Hackeie seu estilo.<br>Assine o Clube.
-                </h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                    Cansado de ligar e não ter horário? Escolha o plano ideal para você e garanta prioridade, cortes mensais e um visual impecável sempre que precisar.
-                </p>
-            </div>
-
-            <!-- Pricing Cards Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
-                
-                <!-- Plan 1: Essencial -->
-                <div class="relative bg-dark-800/50 backdrop-blur-sm border border-white/5 hover:border-white/20 rounded-[2rem] p-8 flex flex-col h-full transition-all duration-300">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="font-heading text-xl font-bold text-gray-300">Plano Essencial</h3>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <span class="text-4xl font-black text-white">R$ 85</span>
-                        <span class="text-gray-500 font-medium">/mês</span>
-                    </div>
-                    
-                    <p class="text-gray-400 text-sm mb-8 border-b border-white/5 pb-8 h-16">
-                        O básico bem feito para quem quer manter o corte sempre alinhado.
-                    </p>
-                    
-                    <ul class="space-y-4 mb-10 flex-1">
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 text-gray-500">
-                                <i class="fas fa-check text-xs"></i>
-                            </div>
-                            <span class="text-gray-300 text-sm">2 Cortes Mensais</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 text-gray-500">
-                                <i class="fas fa-check text-xs"></i>
-                            </div>
-                            <span class="text-gray-300 text-sm">Agendamento Padrão</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 text-gray-500">
-                                <i class="fas fa-check text-xs"></i>
-                            </div>
-                            <span class="text-gray-300 text-sm">1 Café / Refri Free por visita</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="https://wa.me/5511999999999?text=Quero%20assinar%20o%20Plano%20Essencial" target="_blank" class="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 text-center">
-                        Assinar Essencial
-                    </a>
-                </div>
-
-                <!-- Plan 2: VIP (Highlight) -->
-                <div class="relative group lg:-mt-6 lg:mb-6">
-                    <div class="absolute -inset-1 bg-gradient-to-b from-accent-light via-accent to-accent-dark rounded-[2rem] blur opacity-75 group-hover:opacity-100 transition duration-500 pb-1"></div>
-                    
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-accent-light to-accent text-dark-900 font-bold px-4 py-1 rounded-full text-xs uppercase tracking-wider z-20 shadow-lg">
-                        Mais Escolhido
-                    </div>
-
-                    <div class="relative bg-dark-900 border border-white/10 rounded-[2rem] p-8 sm:p-10 flex flex-col h-full z-10">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="font-heading text-2xl font-bold text-white">Plano VIP</h3>
-                            <span class="bg-white/10 text-white text-xs font-bold px-3 py-1 rounded-full border border-white/10">Mensal</span>
+            <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 lg:py-20 w-full relative z-10">
+                <div class="grid lg:grid-cols-[1.02fr_.98fr] gap-12 lg:gap-16 items-center">
+                    <div class="max-w-3xl reveal is-visible">
+                        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[.035] px-3.5 py-2 mb-7">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,.8)]"></span>
+                            <span class="text-xs font-bold uppercase eyebrow text-zinc-300">São Paulo · Seg–Sex 09h–20h</span>
                         </div>
-                        
-                        <div class="mb-6">
-                            <span class="text-5xl font-black text-white">R$ 130</span>
-                            <span class="text-gray-400 font-medium">/mês</span>
-                        </div>
-                        
-                        <p class="text-gray-400 text-sm mb-8 border-b border-white/10 pb-8 h-16">
-                            Perfeito para quem precisa manter a régua sempre alta, sem complicação ou surpresas.
+
+                        <h1 class="font-heading text-[clamp(2.65rem,5.8vw,5.75rem)] leading-[.92] font-black text-white tracking-[-.045em] mb-7">
+                            Seu corte.<br>
+                            <span class="text-accent">Sua assinatura.</span><br>
+                            Seu estilo.
+                        </h1>
+
+                        <p class="text-lg sm:text-xl text-zinc-400 leading-relaxed max-w-2xl mb-9">
+                            Corte, barba e acabamento em um ambiente pensado para quem quer sair alinhado sem transformar o agendamento em complicação.
                         </p>
-                        
-                        <ul class="space-y-5 mb-10 flex-1">
-                            <li class="flex items-start gap-3">
-                                <div class="mt-0.5 bg-accent/20 p-1 rounded-full text-accent">
-                                    <i class="fas fa-check text-xs"></i>
+
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20agendar%20um%20horário." target="_blank" rel="noopener" class="inline-flex justify-center items-center gap-2 rounded-xl bg-accent hover:bg-accent-light text-ink px-7 py-4 font-bold transition-all hover:-translate-y-0.5 shadow-amber">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Agendar pelo WhatsApp
+                            </a>
+                            <a href="#servicos" class="inline-flex justify-center items-center gap-2 rounded-xl border border-white/12 bg-white/[.035] hover:bg-white/[.07] text-white px-7 py-4 font-semibold transition">
+                                Ver serviços <i class="fa-solid fa-arrow-down text-xs"></i>
+                            </a>
+                        </div>
+
+                        <div class="mt-11 grid grid-cols-3 max-w-xl border-t border-white/10 pt-7">
+                            <div>
+                                <p class="font-heading text-2xl sm:text-3xl font-extrabold text-white">4.9<span class="text-accent text-base">★</span></p>
+                                <p class="mt-1 text-[11px] sm:text-xs text-zinc-500 uppercase tracking-wider">Google Reviews</p>
+                            </div>
+                            <div class="border-l border-white/10 pl-5 sm:pl-7">
+                                <p class="font-heading text-2xl sm:text-3xl font-extrabold text-white">1k<span class="text-accent">+</span></p>
+                                <p class="mt-1 text-[11px] sm:text-xs text-zinc-500 uppercase tracking-wider">Assinantes</p>
+                            </div>
+                            <div class="border-l border-white/10 pl-5 sm:pl-7">
+                                <p class="font-heading text-2xl sm:text-3xl font-extrabold text-white">3</p>
+                                <p class="mt-1 text-[11px] sm:text-xs text-zinc-500 uppercase tracking-wider">Planos VIP</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative lg:min-h-[650px] reveal stagger-1 is-visible">
+                        <div class="relative h-[560px] lg:h-[650px] rounded-[28px] overflow-hidden border border-white/10 shadow-deep">
+                            <img src="https://images.unsplash.com/photo-1759134198561-e2041049419c?auto=format&fit=crop&fm=jpg&q=85&w=1800" alt="Barbeiros atendendo clientes em uma barbearia moderna" class="w-full h-full object-cover" fetchpriority="high">
+                            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/5 to-transparent"></div>
+                            <div class="absolute left-6 right-6 bottom-6 sm:left-8 sm:right-8 sm:bottom-8 flex items-end justify-between gap-4">
+                                <div>
+                                    <p class="text-xs uppercase eyebrow text-accent font-bold mb-2">Clube da Barba</p>
+                                    <p class="font-heading text-2xl sm:text-3xl font-bold text-white leading-tight">Técnica precisa.<br>Atendimento sem pressa.</p>
                                 </div>
-                                <span class="text-gray-200"><strong>3 Cortes Mensais</strong><br><span class="text-xs text-gray-500">Agendou, cortou. + Cortes se houver vaga!</span></span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="mt-0.5 bg-accent/20 p-1 rounded-full text-accent">
-                                    <i class="fas fa-check text-xs"></i>
+                                <span class="hidden sm:grid w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/10 place-items-center text-white"><i class="fa-solid fa-scissors"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="absolute -left-5 top-10 hidden xl:block bg-panel/90 backdrop-blur border border-white/10 rounded-2xl p-4 shadow-deep max-w-[210px]">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-accent/12 text-accent grid place-items-center"><i class="fa-solid fa-calendar-check"></i></div>
+                                <div>
+                                    <p class="text-white text-sm font-bold">Agenda simples</p>
+                                    <p class="text-zinc-500 text-xs">WhatsApp em poucos toques</p>
                                 </div>
-                                <span class="text-gray-200"><strong>Prioridade de Agendamento</strong><br><span class="text-xs text-gray-500">Passe na frente nos finais de semana.</span></span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="mt-0.5 bg-accent/20 p-1 rounded-full text-accent">
-                                    <i class="fas fa-check text-xs"></i>
-                                </div>
-                                <span class="text-gray-200"><strong>Cerveja / Café Free</strong><br><span class="text-xs text-gray-500">Uma cortesia a cada visita.</span></span>
-                            </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust strip -->
+        <section class="border-y border-white/[.06] bg-panel/55">
+            <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-5 grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="flex items-center gap-3"><i class="fa-solid fa-calendar-check text-accent"></i><span class="text-sm text-zinc-300">Agendamento direto</span></div>
+                <div class="flex items-center gap-3"><i class="fa-solid fa-mug-hot text-accent"></i><span class="text-sm text-zinc-300">Ambiente confortável</span></div>
+                <div class="flex items-center gap-3"><i class="fa-solid fa-wand-magic-sparkles text-accent"></i><span class="text-sm text-zinc-300">Finalização profissional</span></div>
+                <div class="flex items-center gap-3"><i class="fa-solid fa-crown text-accent"></i><span class="text-sm text-zinc-300">Clube de assinatura</span></div>
+            </div>
+        </section>
+
+        <!-- Sobre -->
+        <section id="sobre" class="py-24 sm:py-28 bg-ink relative">
+            <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+                    <div class="grid grid-cols-12 gap-4 relative reveal">
+                        <div class="col-span-8 h-[520px] rounded-[26px] overflow-hidden border border-white/10 shadow-deep">
+                            <img src="https://images.unsplash.com/photo-1759134248487-e8baaf31e33e?auto=format&fit=crop&fm=jpg&q=85&w=1400" alt="Interior moderno de barbearia" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="col-span-4 mt-16 h-[390px] rounded-[22px] overflow-hidden border border-white/10">
+                            <img src="https://images.unsplash.com/photo-1582771498000-8ad44e6c84db?auto=format&fit=crop&fm=jpg&q=85&w=900" alt="Cliente recebendo finalização de corte na barbearia" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="absolute left-4 bottom-7 bg-panel/95 backdrop-blur border border-white/10 rounded-2xl px-5 py-4 shadow-deep">
+                            <p class="font-heading text-3xl font-black text-accent">5 anos</p>
+                            <p class="text-xs text-zinc-400 uppercase eyebrow mt-1">de estilo e respeito</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal stagger-1">
+                        <p class="text-accent text-xs font-bold uppercase eyebrow mb-4">Sobre o Clube</p>
+                        <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.02] mb-7">Mais do que cortar.<br>É cuidar da presença.</h2>
+                        <p class="text-zinc-400 text-lg leading-relaxed mb-5">No Clube da Barba, técnica, ambiente e atendimento caminham juntos. A proposta é simples: entender seu estilo, executar com precisão e entregar um resultado que faça sentido para sua rotina.</p>
+                        <p class="text-zinc-400 text-lg leading-relaxed mb-9">Do fade ao social, da barba alinhada à experiência completa, tudo acontece em um espaço contemporâneo, climatizado e com atendimento organizado.</p>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="rounded-2xl border border-white/[.08] bg-panel/55 p-5">
+                                <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent grid place-items-center mb-4"><i class="fa-solid fa-face-smile"></i></div>
+                                <h3 class="text-white font-bold mb-1">Atendimento próximo</h3>
+                                <p class="text-zinc-500 text-sm leading-relaxed">Conversa rápida antes do corte para alinhar preferência, rotina e acabamento.</p>
+                            </div>
+                            <div class="rounded-2xl border border-white/[.08] bg-panel/55 p-5">
+                                <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent grid place-items-center mb-4"><i class="fa-solid fa-gem"></i></div>
+                                <h3 class="text-white font-bold mb-1">Produtos premium</h3>
+                                <p class="text-zinc-500 text-sm leading-relaxed">Finalização com produtos de alta performance para cabelo e barba.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços -->
+        <section id="servicos" class="py-24 sm:py-28 bg-panel border-y border-white/[.06] relative overflow-hidden">
+            <div class="absolute -right-40 top-10 w-[420px] h-[420px] rounded-full bg-accent/[.05] blur-[110px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative">
+                <div class="grid lg:grid-cols-[.82fr_1.18fr] gap-8 lg:gap-16 items-end mb-12 sm:mb-14">
+                    <div class="reveal">
+                        <p class="text-accent text-xs font-bold uppercase eyebrow mb-4">Serviços</p>
+                        <h2 class="font-heading text-4xl sm:text-5xl font-black text-white tracking-tight leading-[1.03]">O cuidado certo<br><span class="text-zinc-500">para cada momento.</span></h2>
+                    </div>
+                    <div class="reveal stagger-1 lg:justify-self-end max-w-xl">
+                        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed">Escolha o serviço, veja o valor sem surpresa e fale direto com a barbearia para reservar seu horário.</p>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-5 lg:auto-rows-[410px]">
+                    <!-- Corte -->
+                    <article class="group lg:col-span-4 min-h-[420px] rounded-[28px] overflow-hidden border border-white/[.08] bg-ink relative reveal transition-all duration-500 hover:-translate-y-1 hover:border-white/[.16] hover:shadow-deep">
+                        <img src="https://images.unsplash.com/photo-1622288432450-277d0fef5ed6?auto=format&fit=crop&fm=jpg&q=85&w=1200" alt="Barbeiro realizando corte masculino" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/5"></div>
+                        <div class="absolute inset-x-0 top-0 p-5 sm:p-6 flex items-start justify-between gap-4">
+                            <span class="w-11 h-11 rounded-xl border border-white/10 bg-black/25 backdrop-blur-md grid place-items-center text-accent"><i class="fa-solid fa-scissors"></i></span>
+                            <span class="rounded-full border border-white/10 bg-black/35 backdrop-blur-md px-4 py-2 font-heading text-lg font-black text-white">R$ 55</span>
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+                            <span class="text-[10px] uppercase eyebrow font-bold text-accent">01 · Corte</span>
+                            <h3 class="font-heading text-3xl font-black text-white mt-2 mb-3">Precisão do começo ao fim.</h3>
+                            <p class="text-zinc-400 text-sm leading-relaxed mb-5">Fade, social, pompadour e estilos atuais, com lavagem, consultoria de estilo e finalização.</p>
+                            <a href="https://wa.me/5511999999999?text=Quero%20agendar%20um%20corte." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-bold text-white group-hover:text-accent transition-colors">Agendar corte <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Corte + Barba -->
+                    <article class="group lg:col-span-5 min-h-[460px] lg:min-h-0 rounded-[28px] overflow-hidden border border-accent/35 bg-ink relative reveal stagger-1 shadow-amber transition-all duration-500 hover:-translate-y-1 hover:border-accent/60">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&fm=jpg&q=85&w=1500" alt="Atendimento completo de corte e barba" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/75 to-black/10"></div>
+                        <div class="absolute top-5 left-5 sm:top-6 sm:left-6 inline-flex items-center gap-2 rounded-full bg-accent text-ink px-3.5 py-2 text-[10px] uppercase tracking-wider font-black shadow-lg">
+                            <i class="fa-solid fa-star text-[9px]"></i> Mais pedido
+                        </div>
+                        <div class="absolute top-5 right-5 sm:top-6 sm:right-6 rounded-full border border-accent/30 bg-ink/65 backdrop-blur-md px-4 py-2 font-heading text-xl font-black text-accent">R$ 90</div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                            <span class="text-[10px] uppercase eyebrow font-bold text-accent">02 · Corte + Barba</span>
+                            <h3 class="font-heading text-3xl sm:text-4xl font-black text-white mt-2 mb-3 max-w-md">O visual completo em uma visita.</h3>
+                            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 max-w-xl">Corte, barba, toalha quente, massagem facial e finalização profissional para sair com tudo alinhado.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="rounded-full border border-white/10 bg-white/[.06] px-3 py-1.5 text-[11px] text-zinc-300">Corte</span>
+                                <span class="rounded-full border border-white/10 bg-white/[.06] px-3 py-1.5 text-[11px] text-zinc-300">Barba</span>
+                                <span class="rounded-full border border-white/10 bg-white/[.06] px-3 py-1.5 text-[11px] text-zinc-300">Toalha quente</span>
+                            </div>
+                            <a href="https://wa.me/5511999999999?text=Quero%20agendar%20Corte%20%2B%20Barba." target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-xl bg-accent hover:bg-accent-light text-ink px-5 py-3 font-black text-sm transition-all hover:-translate-y-0.5">Agendar combo <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Barboterapia -->
+                    <article class="group lg:col-span-3 min-h-[420px] rounded-[28px] overflow-hidden border border-white/[.08] bg-ink relative reveal stagger-2 transition-all duration-500 hover:-translate-y-1 hover:border-white/[.16] hover:shadow-deep">
+                        <img src="https://images.unsplash.com/photo-1648221122323-572c13a31663?auto=format&fit=crop&fm=jpg&q=85&w=1200" alt="Barbeiro realizando acabamento de barba" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-black/10"></div>
+                        <div class="absolute inset-x-0 top-0 p-5 sm:p-6 flex items-start justify-between gap-4">
+                            <span class="w-11 h-11 rounded-xl border border-white/10 bg-black/30 backdrop-blur-md grid place-items-center text-accent"><i class="fa-solid fa-droplet"></i></span>
+                            <span class="rounded-full border border-white/10 bg-black/40 backdrop-blur-md px-4 py-2 font-heading text-lg font-black text-white">R$ 45</span>
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+                            <span class="text-[10px] uppercase eyebrow font-bold text-accent">03 · Barboterapia</span>
+                            <h3 class="font-heading text-3xl font-black text-white mt-2 mb-3">Barba alinhada, pele cuidada.</h3>
+                            <p class="text-zinc-300 text-sm leading-relaxed mb-5">Toalha quente, navalha, óleos essenciais e balm hidratante para um acabamento mais confortável.</p>
+                            <a href="https://wa.me/5511999999999?text=Quero%20agendar%20barboterapia." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-bold text-white group-hover:text-accent transition-colors">Agendar barba <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-white/[.07] pt-6 reveal">
+                    <p class="text-zinc-500 text-sm">Quer manter o visual em dia com mais frequência?</p>
+                    <a href="#assinatura" class="inline-flex items-center gap-2 text-sm font-bold text-accent hover:text-accent-light transition">Conhecer os planos do Clube <i class="fa-solid fa-arrow-down text-xs"></i></a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Assinatura -->
+        <section id="assinatura" class="py-24 sm:py-28 bg-panel border-y border-white/[.06] relative overflow-hidden">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
+            <div class="absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[440px] bg-accent/[.06] blur-[120px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative">
+                <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                    <div class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs uppercase eyebrow font-bold mb-5"><i class="fa-solid fa-crown"></i> Clube de assinatura</div>
+                    <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-5">Seu estilo em dia,<br><span class="text-accent">todo mês.</span></h2>
+                    <p class="text-zinc-400 text-lg leading-relaxed">Escolha o plano que combina com sua frequência e ganhe praticidade para manter o visual sempre alinhado.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-5 items-stretch max-w-6xl mx-auto">
+                    <article class="rounded-[26px] border border-white/[.08] bg-ink/80 p-7 sm:p-8 flex flex-col reveal">
+                        <p class="text-zinc-400 font-semibold mb-6">Plano Essencial</p>
+                        <div class="mb-7"><span class="font-heading text-5xl font-black text-white">R$ 85</span><span class="text-zinc-500"> /mês</span></div>
+                        <p class="text-zinc-500 text-sm leading-relaxed pb-7 border-b border-white/[.07]">Para manter o corte alinhado com uma rotina previsível.</p>
+                        <ul class="space-y-4 py-7 flex-1 text-sm">
+                            <li class="flex gap-3"><i class="fa-solid fa-check text-accent mt-1"></i><span>2 cortes mensais</span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-check text-accent mt-1"></i><span>Agendamento padrão</span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-check text-accent mt-1"></i><span>1 café ou refrigerante por visita</span></li>
                         </ul>
-                        
-                        <a href="https://wa.me/5511999999999?text=Quero%20entrar%20para%20o%20Clube%20VIP!" target="_blank" class="w-full bg-gradient-to-r from-accent to-accent-dark hover:from-accent-light hover:to-accent text-white font-bold text-lg py-4 px-6 rounded-xl transition-all duration-300 text-center shadow-[0_0_20px_rgba(245,158,11,0.4)] flex items-center justify-center gap-2">
-                            Quero Ser VIP <i class="fas fa-rocket text-sm"></i>
+                        <a href="https://wa.me/5511999999999?text=Quero%20assinar%20o%20Plano%20Essencial." target="_blank" rel="noopener" class="rounded-xl border border-white/10 hover:border-accent/40 hover:bg-white/[.04] text-white font-bold text-center py-3.5 transition">Assinar Essencial</a>
+                    </article>
+
+                    <article class="rounded-[26px] border border-accent/50 bg-gradient-to-b from-[#211d13] to-ink p-7 sm:p-8 flex flex-col shadow-amber relative lg:-translate-y-3 reveal stagger-1">
+                        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-ink rounded-full px-4 py-1.5 text-[10px] uppercase tracking-wider font-black">Mais escolhido</span>
+                        <p class="text-accent font-semibold mb-6">Plano VIP</p>
+                        <div class="mb-7"><span class="font-heading text-5xl font-black text-white">R$ 130</span><span class="text-zinc-400"> /mês</span></div>
+                        <p class="text-zinc-400 text-sm leading-relaxed pb-7 border-b border-white/[.1]">Para quem precisa manter a régua alta com mais prioridade e comodidade.</p>
+                        <ul class="space-y-4 py-7 flex-1 text-sm text-zinc-200">
+                            <li class="flex gap-3"><i class="fa-solid fa-check text-accent mt-1"></i><span><strong>3 cortes mensais</strong><br><small class="text-zinc-500">+ cortes extras quando houver vaga.</small></span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-check text-accent mt-1"></i><span><strong>Prioridade de agendamento</strong><br><small class="text-zinc-500">Mais praticidade nos horários concorridos.</small></span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-check text-accent mt-1"></i><span><strong>Cerveja ou café</strong><br><small class="text-zinc-500">Uma cortesia por visita.</small></span></li>
+                        </ul>
+                        <a href="https://wa.me/5511999999999?text=Quero%20entrar%20para%20o%20Clube%20VIP!" target="_blank" rel="noopener" class="rounded-xl bg-accent hover:bg-accent-light text-ink font-black text-center py-4 transition shadow-amber">Quero ser VIP</a>
+                    </article>
+
+                    <article class="rounded-[26px] border border-white/[.08] bg-ink/80 p-7 sm:p-8 flex flex-col reveal stagger-2">
+                        <p class="text-zinc-400 font-semibold mb-6">Plano Boss</p>
+                        <div class="mb-7"><span class="font-heading text-5xl font-black text-white">R$ 190</span><span class="text-zinc-500"> /mês</span></div>
+                        <p class="text-zinc-500 text-sm leading-relaxed pb-7 border-b border-white/[.07]">Para quem quer frequência alta e barba incluída na rotina.</p>
+                        <ul class="space-y-4 py-7 flex-1 text-sm">
+                            <li class="flex gap-3"><i class="fa-solid fa-check text-accent mt-1"></i><span>Cortes “ilimitados”*</span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-check text-accent mt-1"></i><span>Barba inclusa 2x ao mês</span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-check text-accent mt-1"></i><span>Prioridade máxima</span></li>
+                            <li class="flex gap-3"><i class="fa-solid fa-check text-accent mt-1"></i><span>Cerveja premium</span></li>
+                        </ul>
+                        <a href="https://wa.me/5511999999999?text=Quero%20assinar%20o%20Plano%20Boss." target="_blank" rel="noopener" class="rounded-xl border border-white/10 hover:border-accent/40 hover:bg-white/[.04] text-white font-bold text-center py-3.5 transition">Assinar Boss</a>
+                    </article>
+                </div>
+                <p class="text-center mt-8 text-xs text-zinc-600">*Uso justo mediante disponibilidade da agenda. Vagas limitadas para preservar a qualidade do atendimento.</p>
+            </div>
+        </section>
+
+        <!-- Equipe -->
+        <section id="equipe" class="py-24 sm:py-28 bg-ink">
+            <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-10 items-end mb-12 reveal">
+                    <div>
+                        <p class="text-accent text-xs font-bold uppercase eyebrow mb-4">A Crew</p>
+                        <h2 class="font-heading text-4xl sm:text-5xl font-black text-white tracking-tight">Quem cuida do seu estilo.</h2>
+                    </div>
+                    <p class="text-zinc-500 max-w-xl lg:justify-self-end leading-relaxed">Uma equipe com perfis complementares para diferentes cortes, acabamentos e estilos.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-5">
+                    <article class="team-card rounded-[24px] border border-white/[.08] bg-panel overflow-hidden reveal">
+                        <div class="h-[360px] overflow-hidden"><img src="https://images.unsplash.com/photo-1771594836579-af129894a49c?auto=format&fit=crop&fm=jpg&q=85&w=1000" alt="Barbeiro Rafael Martins" class="w-full h-full object-cover" loading="lazy"></div>
+                        <div class="p-6"><p class="text-accent text-xs uppercase eyebrow font-bold mb-2">Cortes modernos</p><h3 class="font-heading text-2xl font-bold text-white">Rafael Martins</h3><p class="text-zinc-500 text-sm mt-2">Fade, taper e cortes com textura.</p></div>
+                    </article>
+                    <article class="team-card rounded-[24px] border border-white/[.08] bg-panel overflow-hidden reveal stagger-1">
+                        <div class="h-[360px] overflow-hidden"><img src="https://images.unsplash.com/photo-1693756222572-23e251a7737d?auto=format&fit=crop&fm=jpg&q=85&w=1000" alt="Barbeiro Diego Alves" class="w-full h-full object-cover" loading="lazy"></div>
+                        <div class="p-6"><p class="text-accent text-xs uppercase eyebrow font-bold mb-2">Barba & clássico</p><h3 class="font-heading text-2xl font-bold text-white">Diego Alves</h3><p class="text-zinc-500 text-sm mt-2">Navalha, barboterapia e acabamento clássico.</p></div>
+                    </article>
+                    <article class="team-card rounded-[24px] border border-white/[.08] bg-panel overflow-hidden reveal stagger-2">
+                        <div class="h-[360px] overflow-hidden"><img src="https://images.unsplash.com/photo-1741345980719-0f6578ceb13e?auto=format&fit=crop&fm=jpg&q=85&w=1000" alt="Barbeiro Caio Nunes" class="w-full h-full object-cover" loading="lazy"></div>
+                        <div class="p-6"><p class="text-accent text-xs uppercase eyebrow font-bold mb-2">Visual completo</p><h3 class="font-heading text-2xl font-bold text-white">Caio Nunes</h3><p class="text-zinc-500 text-sm mt-2">Consultoria de estilo e finalização.</p></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos -->
+        <section id="depoimentos" class="py-24 sm:py-28 bg-panel border-y border-white/[.06]">
+            <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="flex items-end justify-between gap-6 mb-11 reveal">
+                    <div>
+                        <p class="text-accent text-xs font-bold uppercase eyebrow mb-4">Avaliações</p>
+                        <h2 class="font-heading text-4xl sm:text-5xl font-black text-white tracking-tight">Quem vem, recomenda.</h2>
+                    </div>
+                    <div class="hidden sm:flex gap-2">
+                        <button class="w-11 h-11 rounded-xl border border-white/10 hover:border-accent/40 hover:text-accent transition" onclick="slideReviews(-1)" aria-label="Avaliação anterior"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button class="w-11 h-11 rounded-xl border border-white/10 hover:border-accent/40 hover:text-accent transition" onclick="slideReviews(1)" aria-label="Próxima avaliação"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div id="reviews-container" class="flex gap-5 overflow-x-auto snap-x snap-mandatory hide-scroll pb-2 reveal">
+                    <article class="min-w-[88%] sm:min-w-[440px] snap-start rounded-[22px] border border-white/[.08] bg-ink p-7">
+                        <div class="text-accent text-sm tracking-widest mb-5">★★★★★</div>
+                        <p class="text-zinc-300 text-lg leading-relaxed mb-7">“A assinatura VIP resolveu minha rotina. Agendo rápido, sou atendido no horário e saio pronto para a semana.”</p>
+                        <div><p class="text-white font-bold">Lucas Castro</p><p class="text-zinc-600 text-xs uppercase eyebrow mt-1">Assinante VIP</p></div>
+                    </article>
+                    <article class="min-w-[88%] sm:min-w-[440px] snap-start rounded-[22px] border border-white/[.08] bg-ink p-7">
+                        <div class="text-accent text-sm tracking-widest mb-5">★★★★★</div>
+                        <p class="text-zinc-300 text-lg leading-relaxed mb-7">“Ambiente muito bom e corte moderno de verdade. Pedi taper fade e o acabamento ficou impecável.”</p>
+                        <div><p class="text-white font-bold">Thiago Garcia</p><p class="text-zinc-600 text-xs uppercase eyebrow mt-1">Cliente avulso</p></div>
+                    </article>
+                    <article class="min-w-[88%] sm:min-w-[440px] snap-start rounded-[22px] border border-white/[.08] bg-ink p-7">
+                        <div class="text-accent text-sm tracking-widest mb-5">★★★★★</div>
+                        <p class="text-zinc-300 text-lg leading-relaxed mb-7">“O clube deixou meu gasto previsível e facilitou muito o agendamento. A experiência é bem acima da média.”</p>
+                        <div><p class="text-white font-bold">Matheus Rocha</p><p class="text-zinc-600 text-xs uppercase eyebrow mt-1">Assinante VIP</p></div>
+                    </article>
+                    <article class="min-w-[88%] sm:min-w-[440px] snap-start rounded-[22px] border border-white/[.08] bg-ink p-7">
+                        <div class="text-accent text-sm tracking-widest mb-5">★★★★★</div>
+                        <p class="text-zinc-300 text-lg leading-relaxed mb-7">“Fui pela barba e acabei fazendo o pacote completo. Atendimento organizado, equipe boa e estrutura excelente.”</p>
+                        <div><p class="text-white font-bold">Pedro Henrique</p><p class="text-zinc-600 text-xs uppercase eyebrow mt-1">Cliente avulso</p></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-24 sm:py-28 bg-ink relative overflow-hidden">
+            <div class="absolute -left-48 top-20 w-[440px] h-[440px] rounded-full bg-accent/[.045] blur-[120px] pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative">
+                <div class="grid lg:grid-cols-[.82fr_1.18fr] gap-10 lg:gap-16 items-start">
+                    <div class="reveal lg:sticky lg:top-28">
+                        <p class="text-accent text-xs font-bold uppercase eyebrow mb-4">Dúvidas rápidas</p>
+                        <h2 class="font-heading text-4xl sm:text-5xl font-black text-white tracking-tight leading-[1.03]">Tudo certo<br><span class="text-zinc-500">antes da cadeira.</span></h2>
+                        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed mt-6 max-w-lg">As respostas principais para você escolher o serviço e chegar com o atendimento já encaminhado.</p>
+
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-3 mt-8 max-w-xl">
+                            <div class="rounded-2xl border border-white/[.08] bg-panel/55 p-5 flex items-start gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/15 text-accent grid place-items-center shrink-0"><i class="fa-regular fa-calendar-check"></i></span>
+                                <div><p class="text-white font-bold text-sm">Agendamento direto</p><p class="text-zinc-500 text-xs leading-relaxed mt-1">Escolha o serviço e consulte os horários pelo WhatsApp.</p></div>
+                            </div>
+                            <div class="rounded-2xl border border-white/[.08] bg-panel/55 p-5 flex items-start gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/15 text-accent grid place-items-center shrink-0"><i class="fa-solid fa-crown"></i></span>
+                                <div><p class="text-white font-bold text-sm">Clube VIP</p><p class="text-zinc-500 text-xs leading-relaxed mt-1">Planos mensais para quem prefere manter o visual em dia.</p></div>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/5511999999999?text=Olá!%20Tenho%20uma%20dúvida%20antes%20de%20agendar." target="_blank" rel="noopener" class="mt-7 inline-flex items-center gap-2 rounded-xl border border-white/10 hover:border-accent/40 hover:bg-white/[.04] px-5 py-3.5 text-white font-bold text-sm transition-all">
+                            <i class="fa-brands fa-whatsapp text-accent"></i> Falar com a equipe
                         </a>
                     </div>
-                </div>
 
-                <!-- Plan 3: Boss -->
-                <div class="relative bg-dark-800/50 backdrop-blur-sm border border-white/5 hover:border-white/20 rounded-[2rem] p-8 flex flex-col h-full transition-all duration-300">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="font-heading text-xl font-bold text-gray-300">Plano Boss</h3>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <span class="text-4xl font-black text-white">R$ 190</span>
-                        <span class="text-gray-500 font-medium">/mês</span>
-                    </div>
-                    
-                    <p class="text-gray-400 text-sm mb-8 border-b border-white/5 pb-8 h-16">
-                        Para quem respira estilo e faz questão do tratamento completo com barba inclusa.
-                    </p>
-                    
-                    <ul class="space-y-4 mb-10 flex-1">
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 text-gray-500">
-                                <i class="fas fa-check text-xs"></i>
+                    <div class="reveal stagger-1">
+                        <div class="rounded-[28px] border border-white/[.08] bg-panel/35 p-3 sm:p-4 shadow-deep">
+                            <div class="faq-item rounded-[20px] border border-transparent bg-ink/75 overflow-hidden">
+                                <button class="faq-toggle w-full flex items-center gap-4 text-left px-5 sm:px-6 py-5 sm:py-6" aria-expanded="false">
+                                    <span class="w-9 h-9 rounded-xl bg-white/[.04] border border-white/[.07] grid place-items-center text-[10px] font-black text-zinc-500 shrink-0">01</span>
+                                    <span class="faq-question text-white font-bold flex-1">Preciso agendar ou vocês atendem por encaixe?</span>
+                                    <span class="faq-icon-wrap w-9 h-9 rounded-xl border border-white/10 grid place-items-center text-accent shrink-0"><i class="faq-icon fa-solid fa-plus text-xs"></i></span>
+                                </button>
+                                <div class="faq-answer"><p class="px-5 sm:px-6 pb-6 sm:pl-[5.15rem] text-zinc-500 leading-relaxed text-sm sm:text-base">O agendamento é recomendado para garantir o horário. Encaixes podem acontecer conforme disponibilidade da equipe no dia.</p></div>
                             </div>
-                            <span class="text-gray-300 text-sm">Cortes "Ilimitados"*</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 text-gray-500">
-                                <i class="fas fa-check text-xs"></i>
+
+                            <div class="h-px bg-white/[.06] mx-5"></div>
+
+                            <div class="faq-item rounded-[20px] border border-transparent bg-ink/75 overflow-hidden">
+                                <button class="faq-toggle w-full flex items-center gap-4 text-left px-5 sm:px-6 py-5 sm:py-6" aria-expanded="false">
+                                    <span class="w-9 h-9 rounded-xl bg-white/[.04] border border-white/[.07] grid place-items-center text-[10px] font-black text-zinc-500 shrink-0">02</span>
+                                    <span class="faq-question text-white font-bold flex-1">Como funciona a assinatura?</span>
+                                    <span class="faq-icon-wrap w-9 h-9 rounded-xl border border-white/10 grid place-items-center text-accent shrink-0"><i class="faq-icon fa-solid fa-plus text-xs"></i></span>
+                                </button>
+                                <div class="faq-answer"><p class="px-5 sm:px-6 pb-6 sm:pl-[5.15rem] text-zinc-500 leading-relaxed text-sm sm:text-base">Você escolhe um dos planos mensais e utiliza os benefícios dentro das condições indicadas em cada opção. Para assinar, fale com a equipe pelo WhatsApp.</p></div>
                             </div>
-                            <span class="text-gray-300 text-sm">Barba inclusa (2x ao mês)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 text-gray-500">
-                                <i class="fas fa-check text-xs"></i>
+
+                            <div class="h-px bg-white/[.06] mx-5"></div>
+
+                            <div class="faq-item rounded-[20px] border border-transparent bg-ink/75 overflow-hidden">
+                                <button class="faq-toggle w-full flex items-center gap-4 text-left px-5 sm:px-6 py-5 sm:py-6" aria-expanded="false">
+                                    <span class="w-9 h-9 rounded-xl bg-white/[.04] border border-white/[.07] grid place-items-center text-[10px] font-black text-zinc-500 shrink-0">03</span>
+                                    <span class="faq-question text-white font-bold flex-1">Quais formas de pagamento são aceitas?</span>
+                                    <span class="faq-icon-wrap w-9 h-9 rounded-xl border border-white/10 grid place-items-center text-accent shrink-0"><i class="faq-icon fa-solid fa-plus text-xs"></i></span>
+                                </button>
+                                <div class="faq-answer"><p class="px-5 sm:px-6 pb-6 sm:pl-[5.15rem] text-zinc-500 leading-relaxed text-sm sm:text-base">Consulte as formas disponíveis no momento do agendamento. A equipe confirma tudo antes do atendimento.</p></div>
                             </div>
-                            <span class="text-gray-300 text-sm">Prioridade Máxima</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 text-gray-500">
-                                <i class="fas fa-check text-xs"></i>
+
+                            <div class="h-px bg-white/[.06] mx-5"></div>
+
+                            <div class="faq-item rounded-[20px] border border-transparent bg-ink/75 overflow-hidden">
+                                <button class="faq-toggle w-full flex items-center gap-4 text-left px-5 sm:px-6 py-5 sm:py-6" aria-expanded="false">
+                                    <span class="w-9 h-9 rounded-xl bg-white/[.04] border border-white/[.07] grid place-items-center text-[10px] font-black text-zinc-500 shrink-0">04</span>
+                                    <span class="faq-question text-white font-bold flex-1">Posso escolher o barbeiro?</span>
+                                    <span class="faq-icon-wrap w-9 h-9 rounded-xl border border-white/10 grid place-items-center text-accent shrink-0"><i class="faq-icon fa-solid fa-plus text-xs"></i></span>
+                                </button>
+                                <div class="faq-answer"><p class="px-5 sm:px-6 pb-6 sm:pl-[5.15rem] text-zinc-500 leading-relaxed text-sm sm:text-base">Sim, desde que o profissional escolhido tenha disponibilidade no horário solicitado.</p></div>
                             </div>
-                            <span class="text-gray-300 text-sm">Cervejas Premium Free</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="https://wa.me/5511999999999?text=Quero%20assinar%20o%20Plano%20Boss" target="_blank" class="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 text-center">
-                        Assinar Boss
-                    </a>
-                </div>
+                        </div>
 
-            </div>
-            
-            <p class="text-center mt-12 text-sm text-gray-500">
-                *O Plano Boss possui uso justo (fair use) mediante disponibilidade da agenda. Vagas limitadas para manter a qualidade de todos os assinantes.
-            </p>
-        </div>
-    </section>
-
-    <section id="depoimentos" class="py-24 bg-dark-800 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div>
-                    <h2 class="text-accent font-bold uppercase tracking-widest text-sm mb-3">A voz da Crew</h2>
-                    <h3 class="font-heading text-4xl font-bold text-white">O que dizem sobre nós</h3>
-                </div>
-                <div class="flex gap-2">
-                    <button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition" onclick="document.getElementById('reviews-container').scrollBy({left: -300, behavior: 'smooth'})">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition" onclick="document.getElementById('reviews-container').scrollBy({left: 300, behavior: 'smooth'})">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Horizontal Scroll Container -->
-            <div id="reviews-container" class="flex gap-6 overflow-x-auto hide-scroll snap-x snap-mandatory pb-8">
-                
-                <!-- Review 1 -->
-                <div class="min-w-[300px] md:min-w-[400px] snap-center glass p-8 rounded-2xl">
-                    <div class="flex text-accent text-sm mb-4 gap-1">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-300 mb-8 font-medium text-lg leading-relaxed">
-                        "A assinatura VIP é absurda. Trabalho com vendas, preciso estar sempre alinhado. Mando mensagem, tem horário, chego lá e sou atendido na hora. Top demais."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-xl font-bold text-white">
-                            LC
-                        </div>
-                        <div>
-                            <p class="text-white font-bold">Lucas Castro</p>
-                            <p class="text-xs text-accent uppercase font-semibold">Assinante VIP</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="min-w-[300px] md:min-w-[400px] snap-center glass p-8 rounded-2xl">
-                    <div class="flex text-accent text-sm mb-4 gap-1">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-300 mb-8 font-medium text-lg leading-relaxed">
-                        "Ambiente irado. Os caras sabem cortar cabelo moderno de verdade. Pedi um taper fade e saiu perfeito. Cerveja gelada e som bom completam o rolê."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-xl font-bold text-white">
-                            TG
-                        </div>
-                        <div>
-                            <p class="text-white font-bold">Thiago Garcia</p>
-                            <p class="text-xs text-gray-500 uppercase font-semibold">Cliente Avulso</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="min-w-[300px] md:min-w-[400px] snap-center glass p-8 rounded-2xl">
-                    <div class="flex text-accent text-sm mb-4 gap-1">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-300 mb-8 font-medium text-lg leading-relaxed">
-                        "Não me preocupo mais em calcular quanto gasto com barbearia por mês. O clube resolveu meu problema. A comodidade de agendar sem burocracia não tem preço."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-xl font-bold text-white">
-                            MR
-                        </div>
-                        <div>
-                            <p class="text-white font-bold">Matheus Rocha</p>
-                            <p class="text-xs text-accent uppercase font-semibold">Assinante VIP</p>
-                        </div>
-                    </div>
-                </div>
-                
-                 <!-- Review 4 -->
-                 <div class="min-w-[300px] md:min-w-[400px] snap-center glass p-8 rounded-2xl">
-                    <div class="flex text-accent text-sm mb-4 gap-1">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-300 mb-8 font-medium text-lg leading-relaxed">
-                        "Estrutura animal, barbeiros muito bem treinados. Fui fazer a barba e acabei saindo com o visual renovado completo. Recomendo de olhos fechados."
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-dark-700 rounded-full flex items-center justify-center text-xl font-bold text-white">
-                            PH
-                        </div>
-                        <div>
-                            <p class="text-white font-bold">Pedro Henrique</p>
-                            <p class="text-xs text-gray-500 uppercase font-semibold">Cliente Avulso</p>
-                        </div>
+                        <p class="text-zinc-600 text-xs mt-4 px-1">Ainda ficou alguma dúvida? O atendimento pelo WhatsApp ajuda a confirmar os detalhes antes da visita.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="localizacao" class="py-24 bg-dark-900 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-dark-800 rounded-3xl overflow-hidden border border-white/5 flex flex-col lg:flex-row shadow-2xl">
-                <!-- Info -->
-                <div class="p-10 lg:p-16 lg:w-1/2 flex flex-col justify-center">
-                    <h2 class="font-heading text-4xl font-bold text-white mb-8">Cola aí.</h2>
-                    
-                    <div class="space-y-8">
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-dark-900 transition-colors shrink-0">
-                                <i class="fas fa-map-marker-alt text-xl"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-white font-bold text-lg mb-1">Base da Operação</h5>
-                                <p class="text-gray-400">Av. Paulista, 1000 - Bela Vista<br>São Paulo - SP</p>
-                            </div>
+        <!-- Localização -->
+        <section id="localizacao" class="py-24 sm:py-28 bg-panel border-y border-white/[.06]">
+            <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="rounded-[28px] overflow-hidden border border-white/[.08] bg-ink shadow-deep grid lg:grid-cols-[.85fr_1.15fr] reveal">
+                    <div class="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+                        <p class="text-accent text-xs font-bold uppercase eyebrow mb-4">Localização & horários</p>
+                        <h2 class="font-heading text-4xl sm:text-5xl font-black text-white mb-8 tracking-tight">Cola aí.</h2>
+
+                        <div class="space-y-6">
+                            <div class="flex gap-4"><span class="w-11 h-11 rounded-xl bg-accent/10 text-accent grid place-items-center shrink-0"><i class="fa-solid fa-location-dot"></i></span><div><p class="text-white font-bold">Av. Paulista, 1000 — Bela Vista</p><p class="text-zinc-500 text-sm mt-1">São Paulo — SP</p></div></div>
+                            <div class="flex gap-4"><span class="w-11 h-11 rounded-xl bg-accent/10 text-accent grid place-items-center shrink-0"><i class="fa-regular fa-clock"></i></span><div><p class="text-white font-bold">Segunda a sexta: 09h às 20h</p><p class="text-zinc-500 text-sm mt-1">Sábado: 09h às 18h</p></div></div>
+                            <div class="flex gap-4"><span class="w-11 h-11 rounded-xl bg-accent/10 text-accent grid place-items-center shrink-0"><i class="fa-brands fa-whatsapp"></i></span><div><p class="text-white font-bold">(11) 99999-9999</p><p class="text-zinc-500 text-sm mt-1">Agendamento pelo WhatsApp</p></div></div>
                         </div>
-                        
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-dark-900 transition-colors shrink-0">
-                                <i class="fas fa-clock text-xl"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-white font-bold text-lg mb-1">Horários</h5>
-                                <p class="text-gray-400">Segunda a Sexta: 09h às 20h<br>Sábados: 09h às 18h</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-dark-900 transition-colors shrink-0">
-                                <i class="fab fa-whatsapp text-xl"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-white font-bold text-lg mb-1">WhatsApp</h5>
-                                <p class="text-gray-400">(11) 99999-9999</p>
-                            </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3 mt-8">
+                            <a href="https://www.waze.com/ul?q=Av.%20Paulista%201000%20S%C3%A3o%20Paulo%20SP&navigate=yes" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 hover:border-accent/40 px-5 py-3.5 text-white font-semibold transition"><i class="fa-solid fa-route text-accent"></i> Abrir no Waze</a>
+                            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-xl bg-accent hover:bg-accent-light px-5 py-3.5 text-ink font-bold transition"><i class="fa-brands fa-whatsapp"></i> Agendar</a>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Map Area -->
-                <div class="lg:w-1/2 min-h-[400px] bg-dark-950 relative">
-                    <!-- Map Graphic Placeholder -->
-                    <div class="absolute inset-0 bg-[url('https://placehold.co/800x600/09090b/27272a?text=Mapa+Interativo')] bg-cover bg-center opacity-40"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-dark-800 to-transparent lg:block hidden"></div>
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <a href="#" class="bg-dark-900/90 backdrop-blur border border-white/10 text-white px-6 py-3 rounded-xl font-medium hover:border-accent transition-colors shadow-xl flex items-center gap-2">
-                            <i class="fas fa-location-arrow text-accent"></i> Abrir no Waze
-                        </a>
+
+                    <div class="min-h-[420px] lg:min-h-[520px] bg-zinc-900">
+                        <iframe title="Mapa da Clube da Barba" src="https://www.google.com/maps?q=Av.%20Paulista%2C%201000%2C%20S%C3%A3o%20Paulo%20SP&output=embed" width="100%" height="100%" style="border:0; min-height: 420px; filter: grayscale(1) contrast(1.05) brightness(.72);" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-20 sm:py-24 bg-ink">
+            <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="relative overflow-hidden rounded-[30px] border border-accent/25 bg-gradient-to-br from-[#241e12] via-panel to-ink px-7 py-12 sm:px-12 sm:py-16 lg:px-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 shadow-amber reveal">
+                    <div class="absolute -right-20 -top-24 w-72 h-72 rounded-full bg-accent/10 blur-3xl"></div>
+                    <div class="relative max-w-2xl">
+                        <p class="text-accent text-xs font-bold uppercase eyebrow mb-4">Seu próximo horário</p>
+                        <h2 class="font-heading text-4xl sm:text-5xl font-black text-white tracking-tight leading-[1.04]">Seu visual não precisa esperar a próxima segunda.</h2>
+                        <p class="text-zinc-400 mt-4">Escolha o serviço e chame no WhatsApp para consultar os horários disponíveis.</p>
+                    </div>
+                    <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20consultar%20os%20horários%20disponíveis." target="_blank" rel="noopener" class="relative shrink-0 inline-flex justify-center items-center gap-2 rounded-xl bg-accent hover:bg-accent-light text-ink px-7 py-4 font-black transition-all hover:-translate-y-0.5"><i class="fa-brands fa-whatsapp text-lg"></i> Consultar horários</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-dark-950 py-12 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <!-- Logo -->
-                <a href="#" class="font-heading text-xl font-black tracking-tight text-white flex items-center gap-2">
-                    CLUBE DA <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-light to-accent-dark">BARBA</span>
-                </a>
-                
-                <!-- Links -->
-                <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-gray-500">
-                    <a href="#sobre" class="hover:text-white transition-colors">A Crew</a>
-                    <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
-                    <a href="#assinatura" class="hover:text-accent transition-colors">Assinatura VIP</a>
-                    <a href="#" class="hover:text-white transition-colors">Políticas</a>
+    <footer class="bg-[#050607] border-t border-white/[.06] py-12">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-[1.2fr_.8fr_.8fr] gap-10 pb-10">
+                <div>
+                    <a href="#inicio" class="font-heading font-black tracking-tight text-white text-xl">CLUBE DA <span class="text-accent">BARBA</span></a>
+                    <p class="text-zinc-600 mt-4 max-w-sm text-sm leading-relaxed">Barbearia, assinatura e cuidado masculino em uma experiência direta, contemporânea e sem complicação.</p>
                 </div>
-                
-                <!-- Social -->
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-accent hover:text-dark-900 transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-accent hover:text-dark-900 transition-colors">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
+                <div>
+                    <p class="text-white font-bold mb-4">Navegação</p>
+                    <div class="grid gap-2 text-sm text-zinc-500"><a href="#servicos" class="hover:text-white transition">Serviços</a><a href="#assinatura" class="hover:text-white transition">Clube VIP</a><a href="#equipe" class="hover:text-white transition">Equipe</a></div>
+                </div>
+                <div>
+                    <p class="text-white font-bold mb-4">Contato</p>
+                    <div class="grid gap-2 text-sm text-zinc-500"><a href="https://wa.me/5511999999999" target="_blank" rel="noopener" class="hover:text-white transition">WhatsApp</a><a href="#" class="hover:text-white transition">Instagram</a><a href="#localizacao" class="hover:text-white transition">Av. Paulista, 1000</a></div>
                 </div>
             </div>
-            
-            <div class="mt-8 pt-8 border-t border-white/5 text-center text-sm text-gray-600">
-                &copy; 2026 Clube da Barba. Estilo e atitude.
+            <div class="pt-8 border-t border-white/[.06] flex flex-col sm:flex-row gap-4 justify-between text-xs text-zinc-700">
+                <p>© 2026 Clube da Barba. Site demonstrativo para apresentação.</p>
+                <p>Fotos externas usadas para demonstração visual.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/5511999999999" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#1ebe5d] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all duration-300 z-50 hover:scale-110">
-        <i class="fab fa-whatsapp"></i>
+    <!-- WhatsApp flutuante -->
+    <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20agendar%20um%20horário." target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp" class="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-2xl bg-[#25D366] text-white grid place-items-center text-2xl shadow-[0_16px_35px_rgba(37,211,102,.28)] hover:-translate-y-1 transition-transform">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script>
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', String(!isOpen));
+            menuBtn.innerHTML = isOpen ? '<i class="fa-solid fa-bars text-lg"></i>' : '<i class="fa-solid fa-xmark text-xl"></i>';
         });
 
-        // Close menu on click link
-        const menuLinks = menu.querySelectorAll('a');
-        menuLinks.forEach(link => {
+        mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                menu.classList.add('hidden');
+                mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.innerHTML = '<i class="fa-solid fa-bars text-lg"></i>';
             });
         });
 
-        // Navbar blur effect on scroll
-        const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                navbar.classList.add('shadow-lg', 'bg-dark-900/80');
-                navbar.classList.remove('bg-transparent');
-            } else {
-                navbar.classList.remove('shadow-lg', 'bg-dark-900/80');
-                navbar.classList.add('bg-transparent');
-            }
+            navbar.classList.toggle('shadow-[0_8px_35px_rgba(0,0,0,.25)]', window.scrollY > 16);
+        }, { passive: true });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.faq-item');
+                const willOpen = !item.classList.contains('open');
+                document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
+                });
+                if (willOpen) {
+                    item.classList.add('open');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
         });
+
+        function slideReviews(direction) {
+            document.getElementById('reviews-container').scrollBy({ left: direction * 465, behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
