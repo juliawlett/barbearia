@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import originalHtml from '../site_institucional_da_barbearia.html?raw';
 
 function Header() {
