@@ -110,9 +110,65 @@ function App() {
 
     documentHtml.querySelector('header')?.remove();
     documentHtml.querySelectorAll('script').forEach((script) => script.remove());
+    documentHtml.querySelectorAll('[onclick]').forEach((element) => element.removeAttribute('onclick'));
 
     return documentHtml.body.innerHTML;
   }, []);
+
+  useEffect(() => {
+    const reviewsContainer = document.getElementById('reviews-container');
+    const reviewButtons = document.querySelectorAll('[aria-label="Avaliação anterior"], [aria-label="Próxima avaliação"]');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const revealElements = document.querySelectorAll('.reveal:not(.is-visible)');
+
+    const handleReviewButton = (event) => {
+      if (!reviewsContainer) return;
+      const direction = event.currentTarget.getAttribute('aria-label') === 'Próxima avaliação' ? 1 : -1;
+      reviewsContainer.scrollBy({ left: direction * 465, behavior: 'smooth' });
+    };
+
+    reviewButtons.forEach((button) => button.addEventListener('click', handleReviewButton));
+
+    const handleFaqToggle = (event) => {
+      const item = event.currentTarget.closest('.faq-item');
+      const willOpen = !item.classList.contains('open');
+
+      faqItems.forEach((faqItem) => {
+        faqItem.classList.remove('open');
+        faqItem.querySelector('.faq-toggle')?.setAttribute('aria-expanded', 'false');
+      });
+
+      if (willOpen) {
+        item.classList.add('open');
+        event.currentTarget.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    const faqButtons = document.querySelectorAll('.faq-toggle');
+    faqButtons.forEach((button) => button.addEventListener('click', handleFaqToggle));
+
+    const observer = 'IntersectionObserver' in window
+      ? new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 })
+      : null;
+
+    revealElements.forEach((element) => {
+      if (observer) observer.observe(element);
+      else element.classList.add('is-visible');
+    });
+
+    return () => {
+      reviewButtons.forEach((button) => button.removeEventListener('click', handleReviewButton));
+      faqButtons.forEach((button) => button.removeEventListener('click', handleFaqToggle));
+      observer?.disconnect();
+    };
+  }, [pageHtml]);
 
   return (
     <>

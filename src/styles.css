@@ -30,3 +30,95 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-padding-top: 92px;
+}
+
+.eyebrow {
+  letter-spacing: .18em;
+}
+
+.photo-overlay {
+  background: linear-gradient(180deg, transparent 20%, rgba(8, 9, 11, .78) 100%);
+}
+
+.hero-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: .08s; }
+.stagger-2 { transition-delay: .16s; }
+.stagger-3 { transition-delay: .24s; }
+
+.team-card img {
+  transition: transform .55s ease, filter .55s ease;
+}
+
+.team-card:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.08);
+}
+
+.faq-item {
+  transition: border-color .3s ease, background .3s ease, box-shadow .3s ease;
+}
+
+.faq-item.open {
+  border-color: rgba(245, 158, 11, .34);
+  background: linear-gradient(135deg, rgba(245, 158, 11, .075), rgba(17, 18, 22, .82) 42%, rgba(17, 18, 22, .68));
+  box-shadow: 0 16px 45px rgba(0, 0, 0, .18);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .38s ease, opacity .3s ease;
+  opacity: 0;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 260px;
+  opacity: 1;
+}
+
+.faq-item.open .faq-question { color: #fbbf24; }
+.faq-item.open .faq-icon-wrap { background: #f59e0b; border-color: #f59e0b; color: #08090b; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-icon, .faq-icon-wrap, .faq-question { transition: transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease; }
+
+:focus-visible {
+  outline: 2px solid #f59e0b;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
